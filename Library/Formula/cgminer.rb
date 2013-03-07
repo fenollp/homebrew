@@ -7,8 +7,8 @@ class Cgminer < Formula
   version '2.11'
 
   depends_on 'automake' => :build
-  depends_on 'curl' => :build
-  depends_on 'c-ares' => :build
+  depends_on 'curl'
+  depends_on 'c-ares'
   depends_on 'libusb'
   depends_on 'pkg-config' => :build
 
@@ -16,8 +16,10 @@ class Cgminer < Formula
     ENV['NOCONFIGURE'] = '1'
 
     system "./autogen.sh"
-    system "./configure", "--disable-debug", "--disable-dependency-tracking",
-    "--prefix=#{prefix}", "--enable-cpumining"
+    system "./configure", "--disable-debug",
+                          "--disable-dependency-tracking",
+                          "--prefix=#{prefix}",
+                          "--enable-cpumining"
     system "make install"
   end
 end
